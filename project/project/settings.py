@@ -29,7 +29,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webpack_loader',
+    'rest_framework',
+    'knox',
+    
+    'accounts',
 ]
+
+# KNOX AUTHENTICATION
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
+
+AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,9 +78,13 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'myAdmin',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    },
 }
 
 
@@ -95,9 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
