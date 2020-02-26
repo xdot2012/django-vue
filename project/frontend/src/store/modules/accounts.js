@@ -14,11 +14,17 @@ const actions = {
     const response = await axios.get("/api/users_list");
 
     commit("setUsers", response.data); //Call the Mutation
+  },
+  async addUser({ commit }, data) {
+    const response = await axios.post("/api/users_list", data);
+
+    commit("newTodo", response.data); //Call the Mutation
   }
 };
 
 const mutations = {
-  setUsers: (state, users) => (state.users = users) //Change the State of todos
+  setUsers: (state, users) => (state.users = users), //Change the State of todos
+  newTodo: (state, user) => state.users.unshift(user) //Change the State of todos
 };
 
 export default {

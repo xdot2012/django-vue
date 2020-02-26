@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Main from "./pages/Main";
+import Main from "./components/Main";
 // import LoginPage from "./components/LoginPage";
 
 export default {

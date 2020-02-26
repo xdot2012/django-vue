@@ -23,14 +23,20 @@
         </v-simple-table>
       </v-card-text>
     </v-card>
+
+    <AddUser />
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import AddUser from "./AddUser";
 
 export default {
   name: "Users",
+  components: {
+    AddUser
+  },
 
   methods: {
     ...mapActions(["fetchUsers"]) //Pull the Actions from modules

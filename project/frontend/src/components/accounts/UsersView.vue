@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Users from "../components/Users";
+import Users from "./Users";
 
 export default {
   name: "UsersView",

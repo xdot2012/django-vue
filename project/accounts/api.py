@@ -12,7 +12,7 @@ class UserViewSet(viewsets.ModelViewSet):
     # permission_classes = [
     #     permissions.IsAuthenticated
     # ]
-    serializer_class = RegisterSerializer
+    serializer_class = UserSerializer
 
     def get_queryset(self):
         return User.objects.all()

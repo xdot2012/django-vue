@@ -53,8 +53,8 @@
 
 <script>
 // import HomePage from "./HomePage";
-import UsersView from "./UsersView";
-import PageHead from "../components/PageHead";
+import UsersView from "./accounts/UsersView";
+import PageHead from "./PageHead";
 
 export default {
   name: "Main",
