@@ -1,0 +1,48 @@
+<template>
+  <div>
+    <v-card>
+      <v-card-title>Usuários Cadastrados</v-card-title>
+      <v-card-text>
+        <v-simple-table>
+          <template v-slot:default>
+            <thead>
+              <tr>
+                <th class="text-left">#</th>
+                <th class="text-left">Nome</th>
+                <th class="text-left">Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="user in allUsers" :key="user.id">
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+              </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
+      </v-card-text>
+    </v-card>
+  </div>
+</template>
+
+<script>
+import { mapGetters, mapActions } from "vuex";
+
+export default {
+  name: "Users",
+
+  methods: {
+    ...mapActions(["fetchUsers"]) //Pull the Actions from modules
+  },
+
+  computed: mapGetters(["allUsers"]), //Get props from the state
+
+  created() {
+    //Run when the component is rendered
+    this.fetchUsers();
+  }
+};
+</script>
+
+<style></style>
