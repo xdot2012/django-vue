@@ -1,8 +1,15 @@
 <template>
   <div>
-    <v-btn bottom color="green" dark fab fixed right @click="dialog = !dialog">
-      <v-icon>mdi-plus</v-icon>
-    </v-btn>
+    <div>
+      <v-tooltip left>
+        <template v-slot:activator="{ on }">
+          <v-btn bottom color="green" dark fab fixed right @click="dialog = !dialog" v-on="on">
+            <v-icon>mdi-plus</v-icon>
+          </v-btn>
+        </template>
+        <span>Adicionar Usuário</span>
+      </v-tooltip>
+    </div>
 
     <v-dialog v-model="dialog" width="800px">
       <v-card>
@@ -16,7 +23,12 @@
             <v-text-field v-model="userName" :rules="rules" label="Nome">
               <v-icon slot="prepend">mdi-account-circle</v-icon>
             </v-text-field>
-            <v-text-field v-model="userEmail" :rules="email" label="Email">
+            <v-text-field
+              v-model="userEmail"
+              :rules="email"
+              label="Email"
+              v-on:keyup.enter="onSubmit"
+            >
               <v-icon slot="prepend">mdi-mail</v-icon>
             </v-text-field>
           </v-container>

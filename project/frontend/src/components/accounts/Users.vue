@@ -10,6 +10,7 @@
                 <th class="text-left">ID</th>
                 <th class="text-left">Nome</th>
                 <th class="text-left">Email</th>
+                <th class="text-left col-sm-1">Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -17,6 +18,9 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
+                <td class="text-right">
+                  <v-btn small color="error">Remover</v-btn>
+                </td>
               </tr>
             </tbody>
           </template>

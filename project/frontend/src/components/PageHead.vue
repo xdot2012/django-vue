@@ -4,7 +4,7 @@
       <v-subheader class="headline font-weight-bold">Dashboard</v-subheader>
       <div>
         <v-breadcrumbs>
-          <v-breadcrumbs-item>Home/Dashboard</v-breadcrumbs-item>
+          <v-breadcrumbs-item>Home</v-breadcrumbs-item>
         </v-breadcrumbs>
       </div>
     </v-row>
