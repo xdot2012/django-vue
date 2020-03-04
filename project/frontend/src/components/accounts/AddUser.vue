@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn bottom color="pink" dark fab fixed right @click="dialog = !dialog">
+    <v-btn bottom color="green" dark fab fixed right @click="dialog = !dialog">
       <v-icon>mdi-plus</v-icon>
     </v-btn>
 
@@ -13,15 +13,17 @@
             </v-avatar>Novo Usuário
           </v-card-title>
           <v-container>
-            <v-text-field :rules="rules" label="Nome">
+            <v-text-field v-model="userName" :rules="rules" label="Nome">
               <v-icon slot="prepend">mdi-account-circle</v-icon>
             </v-text-field>
-            <v-mail-field label="Email" />
+            <v-text-field v-model="userEmail" :rules="email" label="Email">
+              <v-icon slot="prepend">mdi-mail</v-icon>
+            </v-text-field>
           </v-container>
           <v-card-actions>
             <v-spacer />
             <v-btn text color="primary" @click="dialog = false">Cancelar</v-btn>
-            <v-btn text @click="dialog = false">Adicionar Usuário</v-btn>
+            <v-btn text @click="onSubmit">Adicionar Usuário</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
@@ -34,16 +36,38 @@ import { mapActions } from "vuex";
 
 export default {
   name: "AddUser",
-  methods: {
-    ...mapActions(["addUser"])
-  },
   data: () => ({
     dialog: false,
+    userName: "",
+    userEmail: "",
+    user: "",
     rules: [
+      // Name validation
       value => !!value || "Requerido.",
       value => (value && value.length >= 3) || "Mínimo 3 caracteres"
+    ],
+    email: [
+      // Email validation
+      value => !!value || "Requerido.",
+      value =>
+        !value ||
+        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+        "E-mail inválido"
     ]
-  })
+  }),
+  methods: {
+    ...mapActions(["addUser"]),
+    onSubmit(e) {
+      console.log("submit");
+      e.preventDefault();
+      this.user = {
+        name: this.userName,
+        email: this.userEmail
+      };
+      this.dialog = false;
+      this.addUser(this.user);
+    }
+  }
 };
 </script>
 
