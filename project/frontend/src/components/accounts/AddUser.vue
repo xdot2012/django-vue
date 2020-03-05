@@ -14,7 +14,7 @@
     <v-dialog v-model="dialog" width="800px">
       <v-card>
         <v-form @submit="onSubmit">
-          <v-card-title class="indigo darken-2">
+          <v-card-title>
             <v-avatar size="40px" class="mx-3">
               <img src="//ssl.gstatic.com/s2/oz/images/sge/grey_silhouette.png" alt />
             </v-avatar>Novo Usuário

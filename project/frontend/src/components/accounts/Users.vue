@@ -19,7 +19,7 @@
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
                 <td class="text-right">
-                  <v-btn small color="error">Remover</v-btn>
+                  <v-btn small color="error" @click="deleteUser(user.id)">Remover</v-btn>
                 </td>
               </tr>
             </tbody>
@@ -38,12 +38,15 @@ import AddUser from "./AddUser";
 
 export default {
   name: "Users",
+  data: () => ({
+    dialog: false
+  }),
   components: {
     AddUser
   },
 
   methods: {
-    ...mapActions(["fetchUsers"]) //Pull the Actions from modules
+    ...mapActions(["fetchUsers", "deleteUser"]) //Pull the Actions from modules
   },
 
   computed: mapGetters(["allUsers"]), //Get props from the state

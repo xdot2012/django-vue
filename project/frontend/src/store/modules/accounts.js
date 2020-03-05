@@ -16,19 +16,23 @@ const actions = {
     commit("setUsers", response.data); //Call the Mutation
   },
   async addUser({ commit }, user) {
-    console.log(user.name);
-    console.log(user.email);
     const response = await axios.post("/api/users_list/", {
       username: user.name,
       email: user.email
     });
     commit("newUser", response.data); //Call the Mutation
+  },
+  async deleteUser({ commit }, userId) {
+    await axios.delete(`/api/users_list/${userId}/`);
+    commit("removeUser", userId);
   }
 };
 
 const mutations = {
-  setUsers: (state, users) => (state.users = users), //Change the State of todos
-  newUser: (state, user) => state.users.unshift(user) //Change the State of todos
+  setUsers: (state, users) => (state.users = users), //Change the State of users
+  newUser: (state, user) => state.users.unshift(user),
+  removeUser: (state, userId) =>
+    (state.users = state.users.filter(user => user.id !== userId))
 };
 
 export default {
