@@ -1,4 +1,4 @@
-# frontend
+# A Django aplicattion using Vue.js in the frontend, Using Webpack for building
 
 ## Project setup
 ```
